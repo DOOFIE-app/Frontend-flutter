@@ -13,10 +13,16 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white ,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              width: 200,
+                height: 200,
+                child: Image(image: AssetImage('assets/images/app_logo.PNG'))
+            ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Container(
@@ -25,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Commons.themeColor.withOpacity(.7),width: .5),
+                  border: Border.all(color: Commons.themeColor,width: .5),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: TextField(
@@ -50,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 decoration: BoxDecoration(
-                  border: Border.all(color:Commons.themeColor.withOpacity(.7),width: .5),
+                  border: Border.all(color:Commons.themeColor,width: .5),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: TextField(
@@ -79,14 +85,14 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Commons.themeColor.withOpacity(.7),
+                    color: Commons.themeColor.withOpacity(.95),
                   ),
                   child: Text(
                     'Login',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white.withOpacity(.8),
+                      color: Colors.white,
                     ),
                   ),
                 ),

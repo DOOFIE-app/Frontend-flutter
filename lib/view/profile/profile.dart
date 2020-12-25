@@ -9,6 +9,6 @@ class Profile extends StatefulWidget {
 class _Profile extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Profile'));
+    return Center(child: Image(image: AssetImage('assets/images/app_icon.PNG')));
   }
 }

@@ -25,56 +25,57 @@ class _PendingOrder extends State<PendingOrder> {
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width/2-50,
-                        padding: EdgeInsets.only(right: 3),
-                        child: Column(
-                          children: [
-                            Text('Address',
-                              style: TextStyle(
-                                  color: Commons.textColor,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text('136, Periyar street, chennai - 600001,tamilnadu',
-                              style: TextStyle(
-                                  color: Commons.textColor,
-                                  fontSize: 13,
-                              ),
-                            ),
-                          ],
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.only(right: 3),
+                    child: Column(
+                      children: [
+                        Text('Address',
+                          style: TextStyle(
+                              color: Commons.textColor,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width/2+10,
-                        padding: EdgeInsets.only(left: 3),
-                        decoration: BoxDecoration(
-                            border: Border(left:BorderSide(
-                                width: .5
-                            ))
+                        Text('136, Periyar street, chennai - 600001,tamilnadu',
+                          style: TextStyle(
+                              color: Commons.textColor,
+                              fontSize: 13,
+                          ),
                         ),
-                        child: Column(
-                          children: [
-                            Text('Orders',
-                              style: TextStyle(
-                                color: Commons.textColor,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: 5,
-                                itemBuilder:(BuildContext context, int index){
-                                  return
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 1,
+                    indent: 0,
+                    endIndent: 0,
+                    height: 5,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 3),
+                    child: Column(
+                      children: [
+                        Text('Orders',
+                          style: TextStyle(
+                            color: Commons.textColor,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 5,
+                            itemBuilder:(BuildContext context, int index){
+                              return
+                                Column(
+                                  children: [
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          width: MediaQuery.of(context).size.width/2-60,
+                                          width: 150,
                                           child: Text('${index+1}. Tandoori Chicken',
                                             style: TextStyle(
                                               color: Commons.textColor,
@@ -94,21 +95,19 @@ class _PendingOrder extends State<PendingOrder> {
                                           ),
                                         ),
                                       ],
-                                    );
-                                }
-                            ),
-                          ],
+                                    ),
+                                    Divider(
+                                      indent: 10,
+                                      endIndent: 10,
+                                      height: 6,
+                                    ),
+                                  ],
+                                );
+                            }
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-
-                  Divider(
-                    indent: 10,
-                    endIndent: 10,
-                    height: 10,
-                  ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

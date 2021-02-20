@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/view/menu/menu.dart';
-import 'package:restaurant_app/view/order/order.dart';
+import 'package:restaurant_app/view/order/orders-page.dart';
 import 'package:restaurant_app/view/profile/profile.dart';
 
 class Dashboard extends StatefulWidget {
@@ -9,14 +9,11 @@ class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
 }
+
 class _Dashboard extends State<Dashboard> {
   int _selectedIndex = 0;
 
-  final List<Widget> _widgetOptions = <Widget>[
-    Order(),
-    Menu(),
-    Profile()
-  ];
+  final List<Widget> _widgetOptions = <Widget>[OrdersPage(), Menu(), Profile()];
 
   void _onItemTapped(int index) {
     setState(() {

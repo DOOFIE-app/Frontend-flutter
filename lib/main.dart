@@ -1,28 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/utilities/app-theme.dart';
-import 'package:restaurant_app/view/login/login.dart';
-import 'package:restaurant_app/view/dashboard/dashboard.dart';
-import 'package:restaurant_app/view/order/completed-order.dart';
+import 'package:provider/provider.dart';
+
+import 'utilities/app-theme.dart';
+import 'view/dashboard/dashboard.dart';
+import 'view/login/login.dart';
+import 'view/menu/menu-form.validator.dart';
+import 'view/menu/menu_form.dart';
+import 'view/order/completed-order.dart';
+import 'view/order/completed-order.provider.dart';
+import 'view/order/pending-order.provider.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: appTheme,
-        home: LoginPage(),
-        routes: <String, WidgetBuilder>{
-          '/home': (BuildContext context) => LoginPage(),
-          '/dashboard': (BuildContext context) => Dashboard(),
-          '/completed-orders': (BuildContext context) => CompletedOrder(),
-        }
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => PendingOrderProvider()),
+        ChangeNotifierProvider(create: (context) => CompletedOrderProvider()),
+        ChangeNotifierProvider(create: (context) => MenuFormValidator()),
+      ],
+      child: MaterialApp(
+          theme: appTheme,
+          debugShowCheckedModeBanner: false,
+          home: LoginPage(),
+          routes: <String, WidgetBuilder>{
+            '/home': (BuildContext context) => LoginPage(),
+            '/dashboard': (BuildContext context) => Dashboard(),
+            '/completed-orders': (BuildContext context) => CompletedOrder(),
+            '/menu-form': (BuildContext context) => MenuForm(),
+          }),
     );
   }
 }
-
-

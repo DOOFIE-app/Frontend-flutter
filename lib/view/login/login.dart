@@ -17,6 +17,11 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              width: 200,
+                height: 200,
+                child: Image(image: AssetImage('assets/images/app_logo.PNG'))
+            ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Container(

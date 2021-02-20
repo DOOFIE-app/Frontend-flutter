@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/utilities/commons.dart';
-import 'package:restaurant_app/view/dashboard/dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -13,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Commons.textColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,24 +20,24 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: EdgeInsets.all(10),
               child: Container(
-                width: MediaQuery.of(context).size.width*.8,
+                width: MediaQuery.of(context).size.width * .8,
                 height: 40,
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Commons.themeColor.withOpacity(.7),width: .5),
+                  color: Colors.white,
+                  border: Border.all(color: Commons.sbColor, width: .5),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: TextField(
                   textAlign: TextAlign.start,
                   cursorHeight: 20,
                   cursorWidth: .5,
-                  cursorColor: Colors.green.withOpacity(.4),
+                  cursorColor: Commons.sbColor,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Mail Id',
-                      hintStyle: TextStyle(color:Commons.greyColor2)
-                  ),
+                      hintStyle: TextStyle(color: Commons.greyColor2)),
                   onChanged: null,
                 ),
               ),
@@ -45,12 +45,13 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: EdgeInsets.all(10),
               child: Container(
-                width: MediaQuery.of(context).size.width*.8,
+                width: MediaQuery.of(context).size.width * .8,
                 height: 40,
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                 decoration: BoxDecoration(
-                  border: Border.all(color:Commons.themeColor.withOpacity(.7),width: .5),
+                  border: Border.all(color: Commons.sbColor, width: .5),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: TextField(
@@ -61,32 +62,31 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Password',
-                      hintStyle: TextStyle(color: Commons.greyColor2)
-                  ),
+                      hintStyle: TextStyle(color: Commons.greyColor2)),
                   onChanged: null,
                 ),
               ),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.pushNamed(context, '/dashboard');
               },
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Container(
-                  width: MediaQuery.of(context).size.width*.8,
+                  width: MediaQuery.of(context).size.width * .8,
                   height: 50,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Commons.themeColor.withOpacity(.7),
+                    color: Commons.sbColor,
                   ),
                   child: Text(
                     'Login',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white.withOpacity(.8),
+                      color: Colors.white,
                     ),
                   ),
                 ),

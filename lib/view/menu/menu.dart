@@ -38,7 +38,7 @@ class _Menu extends State<Menu> {
                     Text(
                       'Add food to menu',
                       style: TextStyle(
-                        color: Commons.textColor,
+                        color: Commons.bgColor,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),

@@ -4,8 +4,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Commons {
   static const hintColor = Color(0xFF4D0F29);
-  static Color sbColor = Commons.colorFromHex('#3FC060');
-  static Color textColor = Commons.colorFromHex('#162328');
+  static Color bgColor = Commons.colorFromHex('#162328');
+  // static Color sbColor = Commons.colorFromHex('#3FC060');
+  // static Color bgColor = Commons.colorFromHex('#162328');
   static Color greyColor1 = Commons.colorFromHex('#f7f7f7');
   static Color greyColor2 = Commons.colorFromHex('#999999');
   static Color greyColor3 = Commons.colorFromHex('#333333');

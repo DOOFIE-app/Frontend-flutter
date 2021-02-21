@@ -19,7 +19,7 @@ class OrderCard extends StatelessWidget {
           Container(
             height: 130,
             decoration: BoxDecoration(
-              color: Commons.sbColor.withOpacity(.1),
+              color: Commons.bgColor.withOpacity(.1),
               borderRadius: BorderRadius.circular(4),
             ),
           ),
@@ -52,7 +52,7 @@ class OrderCard extends StatelessWidget {
             child: Text(
               DateFormat.yMMMEd().format(DateTime.parse(orderItem.orderDate)),
               style: TextStyle(
-                color: Commons.textColor,
+                color: Commons.bgColor,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
@@ -64,7 +64,7 @@ class OrderCard extends StatelessWidget {
             child: Text(
               orderItem.name,
               style: TextStyle(
-                color: Commons.textColor,
+                color: Commons.bgColor,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

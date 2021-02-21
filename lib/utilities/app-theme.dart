@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/utilities/commons.dart';
 
 final appTheme = ThemeData(
-  primaryColor: Commons.sbColor,
+  primaryColor: Commons.bgColor,
   primarySwatch: Colors.indigo,
   unselectedWidgetColor: Colors.white,
-  accentIconTheme: IconThemeData(color: Commons.textColor),
+  accentIconTheme: IconThemeData(color: Commons.bgColor),
   textTheme: const TextTheme(bodyText1: TextStyle(fontFamily: 'Helvetica')),
-  iconTheme: IconThemeData(color: Commons.sbColor),
+  iconTheme: IconThemeData(color: Commons.bgColor),
   fontFamily: 'Helvetica',
   hintColor: Commons.hintColor,
 );

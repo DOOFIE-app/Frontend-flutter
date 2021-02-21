@@ -32,7 +32,7 @@ class _CompletedOrder extends State<CompletedOrder> {
         title: Text(
           'Completed Orders',
           style: TextStyle(
-              color: Commons.textColor,
+              color: Commons.bgColor,
               fontSize: 20,
               fontWeight: FontWeight.bold),
         ),

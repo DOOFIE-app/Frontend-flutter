@@ -28,7 +28,7 @@ class _Order extends State<OrdersPage> {
                 child: Text(
                   'Pending Orders',
                   style: TextStyle(
-                      color: Commons.textColor,
+                      color: Commons.bgColor,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
@@ -48,7 +48,7 @@ class _Order extends State<OrdersPage> {
                       Text(
                         ' Completed Orders',
                         style: TextStyle(
-                            color: Commons.textColor,
+                            color: Commons.bgColor,
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),

@@ -14,6 +14,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Tandoori Chicken',
+          amount: 100,
           categoryName: 'starters',
           image:
               'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
@@ -23,6 +24,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Barbecue Chicken',
+          amount: 100,
           categoryName: 'starters',
           image:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQf1kGQQcVsbEk2GThwoPLfDECqobHYSKK8A&usqp=CAU',
@@ -31,6 +33,7 @@ class MenuProvider extends ChangeNotifier {
           status: 'available'),
       Food(
           foodId: 1,
+          amount: 100,
           name: 'Kebab chicken',
           categoryName: 'starters',
           image:
@@ -41,6 +44,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Chicken Biriyani',
+          amount: 100,
           categoryName: 'main course',
           image:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK_Unw9q_f7E3XM7WI7xCrgYMGeTpoRwa8DA&usqp=CAU',
@@ -50,6 +54,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Mutton Biriyani',
+          amount: 100,
           categoryName: 'main course',
           image:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK_Unw9q_f7E3XM7WI7xCrgYMGeTpoRwa8DA&usqp=CAU',
@@ -59,6 +64,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Mango shake',
+          amount: 100,
           categoryName: 'drinks',
           image:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw0XQ2LdbIWtSZbEoC2b5DVFrh6yi5syrBxg&usqp=CAU',
@@ -68,6 +74,7 @@ class MenuProvider extends ChangeNotifier {
       Food(
           foodId: 1,
           name: 'Chocolate shake',
+          amount: 100,
           categoryName: 'drinks',
           image:
               'https://www.thespruceeats.com/thmb/4Vh5DSqNp94IcHGov8E7RcsiUHQ=/1000x1000/smart/filters:no_upscale()/chocolate-milkshake-4587581-hero-1-22c8a039103c413dafd75f4f4c39ddd4.JPG',

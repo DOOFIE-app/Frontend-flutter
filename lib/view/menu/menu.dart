@@ -36,66 +36,81 @@ class _Menu extends State<Menu> {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Stack(
-        children: [
-          Positioned(
-              top: 0,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height - 100,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: _menuProvider.categoryList.length,
-                    itemBuilder: (context, index) {
-                      String category = _menuProvider.categoryList[index];
-                      return Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            padding: EdgeInsets.all(5),
-                            color: Commons.bgColor,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              category,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: _menuProvider.foodList.length,
-                              itemBuilder: (context, itemIndex) =>
-                                  (_menuProvider.foodList[itemIndex]
-                                              .categoryName ==
-                                          category)
-                                      ? Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Container(
-                                            height: 50,
-                                            padding: EdgeInsets.all(5),
-                                            child: Text(
-                                              _menuProvider
-                                                  .foodList[itemIndex].name,
-                                              style: TextStyle(
-                                                color: Commons.bgColor,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height - 100,
+        child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: _menuProvider.categoryList.length,
+            itemBuilder: (context, index) {
+              String category = _menuProvider.categoryList[index];
+              return Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      category.toUpperCase(),
+                      style: TextStyle(
+                        color: Commons.bgColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: _menuProvider.foodList.length,
+                      itemBuilder: (context, itemIndex) => (_menuProvider
+                                  .foodList[itemIndex].categoryName ==
+                              category)
+                          ? Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  height: 140,
+                                ),                          
+                                Positioned(
+                                  top: 35,
+                                  left: 20,
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.center_focus_strong_sharp,color: Colors.green,size: 20,),
+                                      Text(
+                                          ' ${_menuProvider.foodList[itemIndex].name}',
+                                          style: TextStyle(
+                                            color: Commons.bgColor,
+                                            fontSize: 15,                                    
                                           ),
-                                      )
-                                      : Container(
-                                          height: 0,
-                                        )),
-                        ],
-                      );
-                    }),
-              )),
-        ],
+                                        ),
+                                    ],
+                                  ),),    
+                                  Positioned(top: 55,
+                                  left: 45,
+                                    child: Text(
+                                          '₹${_menuProvider.foodList[itemIndex].amount}',
+                                          style: TextStyle(
+                                            color: Commons.bgColor,
+                                            fontSize: 13, 
+                                            fontWeight: FontWeight.bold                                   
+                                          ),
+                                        ),),
+                                        Positioned(
+                                          right: 20,
+                                          child: Image.network(_menuProvider.foodList[itemIndex].image,width: 100,height: 100,fit: BoxFit.cover,)),                          
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 10,
+                                    left: 10,
+                                    child: Divider(thickness: 1,)),                                
+                              ],
+                            )
+                          : Container()),
+                ],
+              );
+            }),
       ),
     );
   }

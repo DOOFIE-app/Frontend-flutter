@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../utilities/commons.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  SignUpPage({Key key}) : super(key: key);
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,48 +33,17 @@ class _LoginPageState extends State<LoginPage> {
               height: 400,
               child: Column(
                 children: [
-                  Container(
-                    width: 300,
-                    height: 100,
-                    child: Image(
-                      image: AssetImage('assets/images/logo.png'),
+                  Text(
+                    'Register',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fit: BoxFit.cover,
                     ),
                   ),
                   _mailField(),
                   _passwordField(),
-                  _loginButton(),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'don\'t have an account? ',
-                          style: TextStyle(
-                            fontSize: 14,
-                            // fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        GestureDetector(
-                          //todo navigate to sign-up page
-                          // onTap: () => Navigator.pushNamed(context, '/sign-up'),
-                          onTap: null,
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  _registerButton(),
                 ],
               ),
             )
@@ -140,13 +109,15 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _loginButton() {
+  Widget _registerButton() {
     return GestureDetector(
       onTap: () async {
-        //todo signin with firebase
+        //todo create user
         // await ApiClient.auth
-        //     .signInWithEmailAndPassword(
-        //         email: 'test@doofie.com'.trim(), password: 'password'.trim())
+        //     .createUserWithEmailAndPassword(
+        //       email: 'test@doofie1.com'.trim(),
+        //       password: 'password'.trim(),
+        //     )
         //     .then((value) => print(
         //         '==============> Login details: ${value.user}, ${value.additionalUserInfo.username}'));
         Navigator.pushNamed(context, '/dashboard');
@@ -162,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.green,
           ),
           child: Text(
-            'Login',
+            'Register',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

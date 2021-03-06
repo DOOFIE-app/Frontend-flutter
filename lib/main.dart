@@ -8,13 +8,14 @@ import 'utilities/app-theme.dart';
 import 'view/dashboard/dashboard.dart';
 import 'view/login/login.dart';
 import 'view/login/sign-up.dart';
-import 'view/menu/menu.provider.dart';
 import 'view/menu/menu_form.dart';
+
 //providers
 import 'view/menu/menu_form.validator.dart';
 import 'view/order/completed-order.dart';
 import 'view/order/completed-order.provider.dart';
 import 'view/order/pending-order.provider.dart';
+import 'view/menu/menu.provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -20,7 +20,6 @@ class _Profile extends State<Profile> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
           ),
-
           Positioned(
               top: 0,
               child: Container(
@@ -28,7 +27,6 @@ class _Profile extends State<Profile> {
                 height: 120,
                 color: Commons.bgColor,
               )),
-
           Positioned(
             top: 40,
             left: 20,
@@ -36,11 +34,9 @@ class _Profile extends State<Profile> {
               'Zainab Restaurant',
               style: TextStyle(
                   color: Colors.white,
-//                  fontWeight: FontWeight.bold,
                   fontSize: 15),
             ),
           ),
-
           Positioned(
             top: 10,
             left: 20,
@@ -52,7 +48,6 @@ class _Profile extends State<Profile> {
                   fontSize: 18),
             ),
           ),
-
           Positioned(
             top: 90,
             left: 20,
@@ -64,7 +59,6 @@ class _Profile extends State<Profile> {
                   fontSize: 15),
             ),
           ),
-
           Positioned(
               top: 25,
               right: 20,
@@ -83,7 +77,6 @@ class _Profile extends State<Profile> {
                       fontSize: 25),
                 ),
               )),
-
           Positioned(
             top: 120,
             child: Container(
@@ -91,6 +84,17 @@ class _Profile extends State<Profile> {
               child: Column(
                 children: [
                   ListTile(
+                    leading: Icon(Icons.edit),
+                    title: Text(
+                      'Edit profile',
+                      style: TextStyle(
+                          color: Commons.bgColor, fontWeight: FontWeight.bold),
+                    ),
+                    onTap: () {},
+                  ),
+                  _divider(),
+                  ListTile(
+                    leading: Icon(Icons.book_online),
                     title: Text(
                       'Orders',
                       style: TextStyle(
@@ -98,7 +102,9 @@ class _Profile extends State<Profile> {
                     ),
                     onTap: () {},
                   ),
+                  _divider(),
                   ListTile(
+                    leading: Icon(Icons.notifications),
                     title: Text(
                       'Notification settings',
                       style: TextStyle(
@@ -106,7 +112,9 @@ class _Profile extends State<Profile> {
                     ),
                     onTap: () {},
                   ),
+                  _divider(),
                   ListTile(
+                    leading: Icon(Icons.face),
                     title: Text(
                       'Employees',
                       style: TextStyle(
@@ -114,7 +122,9 @@ class _Profile extends State<Profile> {
                     ),
                     onTap: () {},
                   ),
+                  _divider(),
                   ListTile(
+                    leading: Icon(Icons.menu_book_rounded),
                     title: Text(
                       'Todays details',
                       style: TextStyle(
@@ -122,12 +132,23 @@ class _Profile extends State<Profile> {
                     ),
                     onTap: () {},
                   ),
+                  _divider(),
                 ],
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _divider() {
+    return Divider(
+      thickness: .5,
+      color: Commons.greyAccent2,
+      height: 0,
+      indent: 10,
+      endIndent: 10,
     );
   }
 }

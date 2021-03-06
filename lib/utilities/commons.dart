@@ -24,6 +24,6 @@ class Commons {
   }
 
   static Widget loader() {
-    return const SpinKitFadingCircle(color: Colors.black);
+    return SpinKitFadingCircle(color: Colors.black);
   }
 }

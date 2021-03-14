@@ -70,7 +70,7 @@ class OrderCard extends StatelessWidget {
               ),
             ),
           ),
-          // if (orderItem.status == 'WAITING_FOR_APPROVAL')
+          if(orderItem.status == 'WAITING_FOR_APPROVAL')
           Positioned(
             top: 60,
             left: 10,
@@ -83,7 +83,7 @@ class OrderCard extends StatelessWidget {
               ),
             ),
           ),
-          (orderItem.status == 'WAITING_FOR_APPROVAL')?
+          if(orderItem.status == 'WAITING_FOR_APPROVAL')
           Positioned(
               top: 50,
               right: 90,
@@ -91,7 +91,7 @@ class OrderCard extends StatelessWidget {
                 Icons.check_circle_outline,
                 size: 30,
                 color: Colors.green,
-              )):Container(),
+              )),
           Positioned(
               top: 50,
               right: 50,
@@ -108,7 +108,7 @@ class OrderCard extends StatelessWidget {
                 size: 30,
                 color: Colors.blue,
               )),
-          (orderItem.status == 'ACCEPTED')?
+          if(orderItem.status == 'ACCEPTED')
           Positioned(
               top: 45,
               right: 90,
@@ -125,8 +125,8 @@ class OrderCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              )):Container(),
-          (orderItem.status == 'ACCEPTED')?
+              )),
+          if(orderItem.status == 'ACCEPTED')
           Positioned(
             top: 60,
             left: 10,
@@ -138,7 +138,7 @@ class OrderCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ):Container(),
+          ),
         ],
       ),
     );

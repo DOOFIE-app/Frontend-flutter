@@ -70,28 +70,28 @@ class OrderCard extends StatelessWidget {
               ),
             ),
           ),
-          if(orderItem.status == 'WAITING_FOR_APPROVAL')
-          Positioned(
-            top: 60,
-            left: 10,
-            child: Text(
-              'waiting for approval',
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
+          if (orderItem.status == 'WAITING_FOR_APPROVAL')
+            Positioned(
+              top: 60,
+              left: 10,
+              child: Text(
+                'waiting for approval',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          if(orderItem.status == 'WAITING_FOR_APPROVAL')
-          Positioned(
-              top: 50,
-              right: 90,
-              child: Icon(
-                Icons.check_circle_outline,
-                size: 30,
-                color: Colors.green,
-              )),
+          if (orderItem.status == 'WAITING_FOR_APPROVAL')
+            Positioned(
+                top: 50,
+                right: 90,
+                child: Icon(
+                  Icons.check_circle_outline,
+                  size: 30,
+                  color: Colors.green,
+                )),
           Positioned(
               top: 50,
               right: 50,
@@ -108,37 +108,37 @@ class OrderCard extends StatelessWidget {
                 size: 30,
                 color: Colors.blue,
               )),
-          if(orderItem.status == 'ACCEPTED')
-          Positioned(
-              top: 45,
-              right: 90,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(4)),
-                child: Text(
-                  'Completed',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+          if (orderItem.status == 'ACCEPTED')
+            Positioned(
+                top: 45,
+                right: 90,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Text(
+                    'Completed',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                )),
+          if (orderItem.status == 'ACCEPTED')
+            Positioned(
+              top: 60,
+              left: 10,
+              child: Text(
+                'accepted',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
                 ),
-              )),
-          if(orderItem.status == 'ACCEPTED')
-          Positioned(
-            top: 60,
-            left: 10,
-            child: Text(
-              'accepted',
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
         ],
       ),
     );

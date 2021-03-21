@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utilities/commons.dart';
+import '../../utilities/session.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -143,12 +144,14 @@ class _LoginPageState extends State<LoginPage> {
   Widget _loginButton() {
     return GestureDetector(
       onTap: () async {
+        SessionProvider sessionProvider = SessionProvider();
         //todo signin with firebase
         // await ApiClient.auth
         //     .signInWithEmailAndPassword(
         //         email: 'test@doofie.com'.trim(), password: 'password'.trim())
         //     .then((value) => print(
         //         '==============> Login details: ${value.user}, ${value.additionalUserInfo.username}'));
+        await sessionProvider.loadAllUsers();
         Navigator.pushNamed(context, '/dashboard');
       },
       child: Padding(

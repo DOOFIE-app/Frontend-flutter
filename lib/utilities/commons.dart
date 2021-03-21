@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Commons {
+  static const baseURL = 'https://doofie.herokuapp.com/api_v1';
+
   static const hintColor = Color(0xFF4D0F29);
   static Color bgColor = Commons.colorFromHex('#162328');
   // static Color sbColor = Commons.colorFromHex('#3FC060');

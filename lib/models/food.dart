@@ -38,8 +38,8 @@ class Food {
       'category': item.category,
       'price': item.amount,
       'status': true,
-      'startTime': '11:00',
-      'endTime': '22:00'
+      'startTime': item.startTime ?? '11:00',
+      'endTime': item.endTime ?? '22:00'
     };
     return data;
   }

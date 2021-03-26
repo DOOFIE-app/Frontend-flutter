@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:restaurant_app/repositories/session.dart';
 
 import '../../repositories/auth.dart';
-import '../../repositories/session.dart';
 import '../../utilities/app-text-field.dart';
 import '../../utilities/commons.dart';
 

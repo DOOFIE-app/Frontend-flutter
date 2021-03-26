@@ -37,7 +37,7 @@ class _Order extends State<OrdersPage> {
                 alignment: Alignment.center,
                 height: 30,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Commons.greyColor2),
+                    border: Border.all(color: Commons.greyAccent3),
                     borderRadius: BorderRadius.circular(40)),
                 child: GestureDetector(
                   onTap: () {

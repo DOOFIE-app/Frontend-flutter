@@ -74,7 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
           decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Mail Id',
-              hintStyle: TextStyle(color: Commons.greyColor2)),
+              hintStyle: TextStyle(color: Commons.greyAccent3)),
           onChanged: null,
         ),
       ),
@@ -102,7 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
           decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Password',
-              hintStyle: TextStyle(color: Commons.greyColor2)),
+              hintStyle: TextStyle(color: Commons.greyAccent3)),
           onChanged: null,
         ),
       ),

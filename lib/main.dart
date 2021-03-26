@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           home: SplashScreen(),
           routes: <String, WidgetBuilder>{
             '/login': (BuildContext context) => LoginPage(),
+            '/splashScreen': (BuildContext context) => SplashScreen(),
             '/sign-up': (BuildContext context) => SignUpPage(),
             '/dashboard': (BuildContext context) => Dashboard(),
             '/completed-orders': (BuildContext context) => CompletedOrder(),

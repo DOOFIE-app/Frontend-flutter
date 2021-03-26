@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/models/food.dart';
+import 'package:restaurant_app/utilities/commons.dart';
 
-import '../../models/food.dart';
 import '../../utilities/validation.dart';
 
 class MenuFormValidator with ChangeNotifier {
@@ -48,6 +49,13 @@ class MenuFormValidator with ChangeNotifier {
   ValidationText get description => _description;
   bool get isLoading => _isLoading;
   List<String> get timeList => _timeList;
+
+  bool get formValid =>
+      _itemName.value != null &&
+      _price.value != null &&
+      _category.value != null &&
+      _startTime.value != null &&
+      _endTime.value != null;
 
   void changeImage(File image) {
     if (image != null) {
@@ -112,27 +120,45 @@ class MenuFormValidator with ChangeNotifier {
     notifyListeners();
   }
 
-  //Todo implement with MENU FORM
-  void addItem(String id) {
-    Food food = Food(
-        foodId: 2,
-        name: 'Tandoori Chicken 1',
-        amount: 200,
-        category: 'starters',
-        image:
-            'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
-        startTime: '',
-        endTime: '',
-        status: true);
-    print('>>>>>>>>>>>>> ${Food().toJson(food)}');
-    Map<String, dynamic> data = Food().toJson(food);
+  void clearForm() {
+    _itemName = ValidationText(null, null);
+    _price = ValidationText(null, null);
+    _startTime = ValidationText(null, null);
+    _endTime = ValidationText(null, null);
+    _category = ValidationText(null, null);
+    _description = ValidationText(null, null);
+    notifyListeners();
+  }
+
+  Future<bool> addItem(String id) async {
     try {
-      _firestore.collection('menu').doc(id).update(
+      Food food = Food(
+          foodId: 0,
+          name: itemName.value,
+          amount: int.parse(price.value),
+          category: category.value,
+          image:
+              'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
+          startTime: startTime.value,
+          endTime: endTime.value,
+          status: true);
+
+      Map<String, dynamic> data = Food().toJson(food);
+
+      await _firestore.collection('menu').doc(id).update(
         {
           'food': FieldValue.arrayUnion([data])
-          // [data]
         },
       );
-    } catch (e) {}
+      clearForm();
+      Commons.events.sink.add(Event(name: RELOAD_MENU));
+      print(
+          '>>>>>>>>>>>>> Successfully added item to database <<<<<<<<<<<<<<<');
+      return true;
+    } catch (e) {
+      print(
+          '>>>>>>>>>>>>> Error occured during adding item : == $e == <<<<<<<<<<<<<<<');
+      return false;
+    }
   }
 }

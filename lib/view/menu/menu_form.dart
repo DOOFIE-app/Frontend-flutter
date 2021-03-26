@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:restaurant_app/repositories/auth.dart';
 
 import '../../utilities/commons.dart';
 import 'menu_form.validator.dart';
@@ -14,12 +15,15 @@ class MenuForm extends StatefulWidget {
 
 class _MenuFormState extends State<MenuForm> {
   MenuFormValidator _menuFormValidator;
+  AuthProvider authProvider = AuthProvider();
   File _image;
+  final nameField = TextEditingController();
+  final amountField = TextEditingController();
+  final descriptionField = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     _menuFormValidator = Provider.of<MenuFormValidator>(context);
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
@@ -56,6 +60,7 @@ class _MenuFormState extends State<MenuForm> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: .5)),
                   child: TextField(
+                    controller: nameField,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -64,7 +69,7 @@ class _MenuFormState extends State<MenuForm> {
                       errorText: _menuFormValidator.itemName.error,
                     ),
                     onChanged: (String value) {
-                      // menuFormValidator.changeName(value);
+                      _menuFormValidator.changeName(value);
                     },
                   ),
                 ),
@@ -80,6 +85,7 @@ class _MenuFormState extends State<MenuForm> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: .5)),
                   child: TextField(
+                    controller: amountField,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -88,7 +94,7 @@ class _MenuFormState extends State<MenuForm> {
                       errorText: _menuFormValidator.price.error,
                     ),
                     onChanged: (String value) {
-                      // menuFormValidator.changeName(value);
+                      _menuFormValidator.changePrice(value);
                     },
                   ),
                 ),
@@ -103,6 +109,7 @@ class _MenuFormState extends State<MenuForm> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: .5)),
                   child: TextField(
+                    controller: descriptionField,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -111,7 +118,7 @@ class _MenuFormState extends State<MenuForm> {
                       errorText: _menuFormValidator.description.error,
                     ),
                     onChanged: (String value) {
-                      // menuFormValidator.changeName(value);
+                      _menuFormValidator.changeDescription(value);
                     },
                   ),
                 ),
@@ -120,25 +127,49 @@ class _MenuFormState extends State<MenuForm> {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(2)),
-                    child: Text(
-                      'Add item',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: _addItemButton(),
                 ),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  void clearText() {
+    descriptionField.clear();
+    nameField.clear();
+    amountField.clear();
+  }
+
+  Widget _addItemButton() {
+    return GestureDetector(
+      onTap: () async {
+        print('tapped ${_menuFormValidator.formValid}');
+        if (_menuFormValidator.formValid) {
+          await _menuFormValidator
+              .addItem(authProvider.auth.currentUser.uid)
+              .then((value) {
+            if (value) {
+              clearText();
+            }
+          });
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: _menuFormValidator.formValid ? Colors.green : Colors.grey,
+            borderRadius: BorderRadius.circular(2)),
+        child: Text(
+          'Add item',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -223,50 +254,47 @@ class _MenuFormState extends State<MenuForm> {
         Icons.timelapse_outlined,
         color: Colors.white,
       ),
-      title: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            DropdownButton<String>(
-              value: _menuFormValidator.startTime.value,
-              style: TextStyle(color: Colors.white, fontSize: 16),
-              onChanged: (String value) =>
-                  _menuFormValidator.changeStartTime(value),
-              hint: Text(
-                'Available from',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Commons.greyAccent2),
+      title: Row(children: [
+        DropdownButton<String>(
+          value: _menuFormValidator.startTime.value,
+          style: TextStyle(color: Colors.white, fontSize: 16),
+          onChanged: (String value) =>
+              _menuFormValidator.changeStartTime(value),
+          hint: Text(
+            'Available from',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Commons.greyAccent2),
+          ),
+          items: _menuFormValidator.timeList.map((item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                '$item',
+                style: TextStyle(color: Colors.black),
               ),
-              items: _menuFormValidator.timeList.map((item) {
-                return DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    '$item',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                );
-              }).toList(),
-            ),
-            DropdownButton<String>(
-              value: _menuFormValidator.endTime.value,
-              style: TextStyle(color: Colors.white, fontSize: 16),
-              onChanged: (String value) =>
-                  _menuFormValidator.changeEndTime(value),
-              hint: Text(
-                'Available till',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Commons.greyAccent2),
+            );
+          }).toList(),
+        ),
+        DropdownButton<String>(
+          value: _menuFormValidator.endTime.value,
+          style: TextStyle(color: Colors.white, fontSize: 16),
+          onChanged: (String value) => _menuFormValidator.changeEndTime(value),
+          hint: Text(
+            'Available till',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Commons.greyAccent2),
+          ),
+          items: _menuFormValidator.timeList.map((item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                '$item',
+                style: TextStyle(color: Colors.black),
               ),
-              items: _menuFormValidator.timeList.map((item) {
-                return DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    '$item',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                );
-              }).toList(),
-            )
-          ]),
+            );
+          }).toList(),
+        )
+      ]),
     );
   }
 

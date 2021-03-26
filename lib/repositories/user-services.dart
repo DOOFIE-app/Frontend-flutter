@@ -18,28 +18,40 @@ class UserServices {
     String id = values['id'];
     _firestore.collection(collection).document(id).updateData(values);
   }
-
-  // Future<void> getUserById(String id) {
-  //   Food food = Food(
-  //       foodId: 2,
-  //       name: 'Tandoori Chicken 1',
-  //       amount: 200,
-  //       category: 'starters',
-  //       image:
-  //           'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
-  //       startTime: '',
-  //       endTime: '',
-  //       status: true);
-  //   print('>>>>>>>>>>>>> ${Food().toJson(food)}');
-  //   Map<String, dynamic> data = Food().toJson(food);
-  //   try {
-  //     _firestore.collection('menu').doc(id).update(
-  //       {
-  //         'food': FieldValue.arrayUnion([data])
-  //         // [data]
-  //       },
-  //     );
-  //   } catch (e) {}
-  //   //_firestore.collection('menu').document(id).get();
-  // }
+///example
+  Future<void> getUserById(String id) {
+    // Food food = Food(
+    //     foodId: 2,
+    //     name: 'Tandoori Chicken',
+    //     amount: 100,
+    //     category: 'starters',
+    //     image:
+    //         'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
+    //     startTime: '11:00',
+    //     endTime: '22:00',
+    //     status: true);
+    // print('>>>>>>>>>>>>> ${Food().toJson(food)}');
+    // Map<String, dynamic> data = {
+    //   'name': 'barbeque',
+    //   'category': 'Main course',
+    //   'price': 250,
+    //   ' status': true,
+    //   'startTime': '11:00',
+    //   'endTime': '22:00'
+    // };
+    // try {
+    //   _firestore.collection('menu').document(id).update(
+    //     {
+    //       'food': FieldValue.arrayRemove([data])
+    //       // [data]
+    //     },
+    //   ).then((value) {
+    //     print(
+    //         '>>>>>>>>>> Successfully deleted item from database <<<<<<<<<<<<');
+    //   });
+    // } catch (e) {
+    //   print('>>>>>>>>>>>>> error ::: $e <<<<<<');
+    // }
+    //_firestore.collection('menu').document(id).get();
+  }
 }

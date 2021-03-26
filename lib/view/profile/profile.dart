@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../repositories/session.dart';
 import '../../utilities/commons.dart';
 
 class Profile extends StatefulWidget {
@@ -10,8 +12,12 @@ class Profile extends StatefulWidget {
 }
 
 class _Profile extends State<Profile> {
+  SessionProvider _sessionProvider;
+
   @override
   Widget build(BuildContext context) {
+    _sessionProvider = Provider.of<SessionProvider>(context);
+
     return SafeArea(
       child: Stack(
         alignment: Alignment.center,
@@ -28,20 +34,10 @@ class _Profile extends State<Profile> {
                 color: Commons.bgColor,
               )),
           Positioned(
-            top: 40,
-            left: 20,
-            child: Text(
-              'Zainab Restaurant',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15),
-            ),
-          ),
-          Positioned(
             top: 10,
             left: 20,
             child: Text(
-              'Mohamed Riyas',
+              _sessionProvider.userSession.name?.toUpperCase() ?? '',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -49,16 +45,24 @@ class _Profile extends State<Profile> {
             ),
           ),
           Positioned(
-            top: 90,
+            top: 40,
             left: 20,
             child: Text(
-              'Today total orders: 5',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15),
+              _sessionProvider.restaurantSession.name ?? '',
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
+          // Positioned(
+          //   top: 90,
+          //   left: 20,
+          //   child: Text(
+          //     'Today total orders: 5',
+          //     style: TextStyle(
+          //         color: Colors.white,
+          //         fontWeight: FontWeight.bold,
+          //         fontSize: 15),
+          //   ),
+          // ),
           Positioned(
               top: 25,
               right: 20,
@@ -70,7 +74,10 @@ class _Profile extends State<Profile> {
                     color: Colors.white),
                 alignment: Alignment.center,
                 child: Text(
-                  'M',
+                  _sessionProvider.userSession.name
+                          ?.substring(0, 1)
+                          .toUpperCase() ??
+                      '',
                   style: TextStyle(
                       color: Commons.bgColor,
                       fontWeight: FontWeight.bold,

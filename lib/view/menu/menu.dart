@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,6 +14,7 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   MenuProvider _menuProvider;
 
   @override
@@ -20,8 +22,8 @@ class _Menu extends State<Menu> {
     super.initState();
     MenuProvider menuProvider =
         Provider.of<MenuProvider>(context, listen: false);
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => menuProvider.getFoodList());
+    WidgetsBinding.instance.addPostFrameCallback(
+        (_) => menuProvider.getFoodList(_auth.currentUser.uid));
   }
 
   @override
@@ -63,51 +65,79 @@ class _Menu extends State<Menu> {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: _menuProvider.foodList.length,
-                      itemBuilder: (context, itemIndex) => (_menuProvider
-                                  .foodList[itemIndex].categoryName ==
-                              category)
-                          ? Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Container(
-                                  height: 140,
-                                ),                          
-                                Positioned(
-                                  top: 35,
-                                  left: 20,
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.center_focus_strong_sharp,color: Colors.green,size: 20,),
-                                      Text(
-                                          ' ${_menuProvider.foodList[itemIndex].name}',
-                                          style: TextStyle(
-                                            color: Commons.bgColor,
-                                            fontSize: 15,                                    
+                      itemBuilder: (context, itemIndex) =>
+                          (_menuProvider.foodList[itemIndex].category ==
+                                  category)
+                              ? Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      height: 140,
+                                    ),
+                                    Positioned(
+                                      top: 35,
+                                      left: 20,
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.center_focus_strong_sharp,
+                                            color: Colors.green,
+                                            size: 20,
                                           ),
-                                        ),
-                                    ],
-                                  ),),    
-                                  Positioned(top: 55,
-                                  left: 45,
-                                    child: Text(
-                                          '₹${_menuProvider.foodList[itemIndex].amount}',
-                                          style: TextStyle(
-                                            color: Commons.bgColor,
-                                            fontSize: 13, 
-                                            fontWeight: FontWeight.bold                                   
+                                          Text(
+                                            ' ${_menuProvider.foodList[itemIndex].name}',
+                                            style: TextStyle(
+                                              color: Commons.bgColor,
+                                              fontSize: 15,
+                                            ),
                                           ),
-                                        ),),
-                                        Positioned(
-                                          right: 20,
-                                          child: Image.network(_menuProvider.foodList[itemIndex].image,width: 100,height: 100,fit: BoxFit.cover,)),                          
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 10,
-                                    left: 10,
-                                    child: Divider(thickness: 1,)),                                
-                              ],
-                            )
-                          : Container()),
+                                        ],
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: 55,
+                                      left: 45,
+                                      child: Text(
+                                        '₹${_menuProvider.foodList[itemIndex].amount}',
+                                        style: TextStyle(
+                                            color: Commons.bgColor,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        right: 20,
+                                        child: (_menuProvider
+                                                        .foodList[itemIndex]
+                                                        .image !=
+                                                    null &&
+                                                _menuProvider
+                                                        .foodList[itemIndex]
+                                                        .image !=
+                                                    '')
+                                            ? Image.network(
+                                                _menuProvider
+                                                    .foodList[itemIndex].image,
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : Image.asset(
+                                                'assets/images/placeholder.png',
+                                                width: 100,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              )),
+                                    Positioned(
+                                        bottom: 0,
+                                        right: 10,
+                                        left: 10,
+                                        child: Divider(
+                                          thickness: 1,
+                                        )),
+                                  ],
+                                )
+                              : Container()),
                 ],
               );
             }),

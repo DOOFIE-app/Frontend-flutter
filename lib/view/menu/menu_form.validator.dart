@@ -1,10 +1,14 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/food.dart';
 import '../../utilities/validation.dart';
 
 class MenuFormValidator with ChangeNotifier {
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   ValidateFile _image = ValidateFile(null, null);
   ValidationText _itemName = ValidationText(null, null);
   ValidationText _price = ValidationText(null, null);
@@ -106,5 +110,29 @@ class MenuFormValidator with ChangeNotifier {
       _endTime = ValidationText(null, 'Choose Ending time');
     }
     notifyListeners();
+  }
+
+  //Todo implement with MENU FORM
+  void addItem(String id) {
+    Food food = Food(
+        foodId: 2,
+        name: 'Tandoori Chicken 1',
+        amount: 200,
+        category: 'starters',
+        image:
+            'https://www.whiskaffair.com/wp-content/uploads/2020/05/Tandoori-Chicken-1-3.jpg',
+        startTime: '',
+        endTime: '',
+        status: true);
+    print('>>>>>>>>>>>>> ${Food().toJson(food)}');
+    Map<String, dynamic> data = Food().toJson(food);
+    try {
+      _firestore.collection('menu').doc(id).update(
+        {
+          'food': FieldValue.arrayUnion([data])
+          // [data]
+        },
+      );
+    } catch (e) {}
   }
 }

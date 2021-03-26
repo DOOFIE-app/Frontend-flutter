@@ -22,7 +22,7 @@ class PendingOrderProvider extends ChangeNotifier {
                     foodId: 1,
                     name: 'tandoori',
                     amount: 200,
-                    status: 'Available',
+                    status: true,
                     startTime: '12:00',
                     endTime: '01:00'),
                 count: 2)
@@ -40,7 +40,7 @@ class PendingOrderProvider extends ChangeNotifier {
                     foodId: 1,
                     name: 'parota',
                     amount: 50,
-                    status: 'Available',
+                    status: true,
                     startTime: '12:00',
                     endTime: '01:00'),
                 count: 2)

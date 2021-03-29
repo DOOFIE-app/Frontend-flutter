@@ -178,6 +178,8 @@ class _LoginPageState extends State<LoginPage> {
           await authProvider.signIn(
               email: _emailController.text.trim(),
               password: _passwordController.text.trim());
+          await sessionProvider
+              .initiateSession(authProvider.auth.currentUser.uid);
           Navigator.pushReplacementNamed(context, '/dashboard');
         } on FirebaseAuthException catch (e) {
           authProvider.changeStatus(Status.Unauthenticated);

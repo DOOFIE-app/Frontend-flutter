@@ -8,6 +8,14 @@ Online food order manager app.
 
 # About
 
+It is the manager application, It maintains all the details of the shop.
+
+  * Order management
+  * stock management
+  * User management
+  
+  are the modules implemented to manage to app.
+
 # Samples
 
 ## Login

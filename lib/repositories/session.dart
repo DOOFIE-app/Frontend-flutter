@@ -17,11 +17,6 @@ class SessionProvider with ChangeNotifier {
   void initiateSession(String id) async {
     _userSession = await getUserById(id);
     _restaurantSession = await getRestaurantById(id);
-    print('>>>>>>>>>>>>>>> ${[
-      _restaurantSession.name,
-      _restaurantSession.address,
-      _userSession.name
-    ]} <<<<<<<<<<<<');
     notifyListeners();
   }
 

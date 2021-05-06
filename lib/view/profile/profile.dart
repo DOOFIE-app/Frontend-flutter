@@ -52,17 +52,17 @@ class _Profile extends State<Profile> {
               style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
-          // Positioned(
-          //   top: 90,
-          //   left: 20,
-          //   child: Text(
-          //     'Today total orders: 5',
-          //     style: TextStyle(
-          //         color: Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //         fontSize: 15),
-          //   ),
-          // ),
+          Positioned(
+            top: 90,
+            left: 20,
+            child: Text(
+              'Today total orders: 5',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
+            ),
+          ),
           Positioned(
               top: 25,
               right: 20,

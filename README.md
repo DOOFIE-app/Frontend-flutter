@@ -20,7 +20,11 @@ It is the manager application, It maintains all the details of the shop.
 
 ## Login
 
-![WhatsApp Image 2021-05-06 at 1 20 08 PM (2)](https://user-images.githubusercontent.com/73823991/117262332-c0d8c780-ae6e-11eb-89a8-1721946c6176.jpeg) ## Dashboard ![WhatsApp Image 2021-05-06 at 1 20 08 PM](https://user-images.githubusercontent.com/73823991/117262227-a7378000-ae6e-11eb-91ce-d6fe2fcb57f1.jpeg)
+![WhatsApp Image 2021-05-06 at 1 20 08 PM (2)](https://user-images.githubusercontent.com/73823991/117262332-c0d8c780-ae6e-11eb-89a8-1721946c6176.jpeg) 
+
+## Dashboard 
+
+![WhatsApp Image 2021-05-06 at 1 20 08 PM](https://user-images.githubusercontent.com/73823991/117262227-a7378000-ae6e-11eb-91ce-d6fe2fcb57f1.jpeg)
 
 
 ## Add/Edit items
